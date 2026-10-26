@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>MLB: Virando Heroi!</title>
 </head>
+
 <body>
     <p class="nome">Ladybug</p>
-    <img class="personagem" src="imgs/ladybug.png">
-    
+    <img class="personagem" src="imgs/ladybug.png" alt="Personagem selecionado">
+
     <div class="infos">
         <p class="titulo">Selecione um personagem.</p>
         <h1 class="frase-efeito">Não é só<br>um desenho.</h1>
@@ -20,16 +22,32 @@
     </div>
 
     <div class="menu">
-        <img onclick="mudarPersonagem('Ladybug', 'imgs/ladybug.png', '#E3000B')" class="herois" src="imgs/logo_joaninha.jpg">
-        <img onclick="mudarPersonagem('Chat Noir', 'imgs/chat_noir.png', '#81e733')" class="herois" src="imgs/logo_gato_preto.jpg">
-        <img onclick="mudarPersonagem('Chrysalis', 'imgs/Chrysalis.png', '#6A0DAD')" class="herois" src="imgs/logo_borboleta.jpg">
+        <img onclick="mudarPersonagem('Ladybug', 'imgs/ladybug.png', '#E3000B')" class="herois"
+            src="imgs/logo_joaninha.jpg">
+        <img onclick="mudarPersonagem('Chat Noir', 'imgs/chat_noir.png', '#81e733')" class="herois"
+            src="imgs/logo_gato_preto.jpg">
+        <img onclick="mudarPersonagem('Chrysalis', 'imgs/Chrysalis.png', '#6A0DAD')" class="herois"
+            src="imgs/logo_borboleta.jpg">
 
-        <button class="herois">📷</button>
+        <label><img src="imgs/caixa.jpg" class="herois">
+            <input id="inputFoto" type="file" accept="image/*" hidden onchange="lerFoto(this)">
+        </label>
     </div>
+
+    <div id="carregamento" class="carregamento" hidden>
+        <div class="caixa-carregamento">
+            <div class="spinner"></div>
+
+            <h2>Preparando sua transformação...</h2>
+
+            <p id="mensagemCarregamento" aria-live="polite">
+                Sua foto está sendo transformada em um herói de Miraculous.
+                Aguarde um instante!
+            </p>
+        </div>
+    </div>
+
+    <script src="https://js.puter.com/v2/"></script>
+    <script src="Scripts.js"></script>
 </body>
-
-<script src="Scripts.js">
-    
-</script>
-
 </html>

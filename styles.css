@@ -1,78 +1,334 @@
+
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: "Lobster", sans-serif;
 }
 
-html {
-    height: 100%;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-    background: url(imgs/paris.jpg);
-    background-size: cover;
-    background-position: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+    overflow: hidden;
+
+    background: url("imgs/paris.jpg") center center / cover no-repeat;
 }
 
+/* Nome do personagem */
 .nome {
-    color: #f21c1e;
-    text-shadow: 5px 0 #000, -2px 0 #000, 0 5px #000, 0 -2px #000;
-    font-size: 220px;
-    width: 100%;
     position: absolute;
+    top: 4%;
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+
+    color: #f21c1e;
+    text-shadow:
+        5px 0 #000,
+        -2px 0 #000,
+        0 5px #000,
+        0 -2px #000;
+
+    font-size: clamp(3.5rem, 13vw, 220px);
+    line-height: 1.1;
     text-align: center;
-    bottom: 400px;
+    overflow-wrap: break-word;
+
 }
 
+/* Personagem centralizado */
 .personagem {
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
-    height: 600px;
-    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: auto;
+    height: min(75vh, 750px);
+    max-width: 100%;
+    object-fit: contain;
+    object-position: bottom;
 }
 
+/* Informações no canto inferior esquerdo */
 .infos {
     position: absolute;
-    bottom: 40px;
-    left: 40px;
-    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff;
+    left: 3%;
+    bottom: 150px;
+    width: min(42%, 550px);
+    z-index: 2;
+
+    text-shadow:
+        2px 0 #fff,
+        -2px 0 #fff,
+        0 2px #fff,
+        0 -2px #fff;
 }
 
 .titulo {
-    font-size: 25px;
-    text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff;
+    font-size: clamp(16px, 2vw, 25px);
+    text-shadow:
+        1px 0 #fff,
+        -1px 0 #fff,
+        0 1px #fff,
+        0 -1px #fff;
 }
 
 .frase-efeito {
-    font-size: 60px;
+    font-size: clamp(30px, 4.2vw, 60px);
+    line-height: 1.1;
+    overflow-wrap: break-word;
 }
 
 .subtitulo {
-    font-size: 20px;
-        text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff;
+    font-size: clamp(14px, 1.6vw, 20px);
+    line-height: 1.3;
+    text-shadow:
+        1px 0 #fff,
+        -1px 0 #fff,
+        0 1px #fff,
+        0 -1px #fff;
 }
 
+/* Menu de personagens */
 .menu {
     position: absolute;
+    bottom: 25px;
+    left: 0;
     width: 100%;
-    bottom: 50px;
-    gap: 20px;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 20px);
+
+    z-index: 3;
+}
+
+.herois {
+    display: block;
+    flex: 0 0 clamp(55px, 8vw, 100px);
+
+    width: clamp(55px, 8vw, 100px);
+    height: clamp(55px, 8vw, 100px);
+
+    border: 3px solid #f00;
+    border-radius: 50%;
+    background: none;
+
+    object-fit: cover;
+    object-position: top;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.herois:hover {
+    transform: scale(1.08);
+}
+
+/* Tablet e telas menores */
+@media (max-width: 768px) {
+    .nome {
+        top: 5%;
+        font-size: clamp(55px, 12vw, 95px);
+    }
+
+    .personagem {
+        height: 65vh;
+        max-width: 100%;
+    }
+
+    .infos {
+        left: 20px;
+        bottom: 125px;
+        width: min(48%, 380px);
+    }
+
+    .frase-efeito {
+        font-size: clamp(28px, 5vw, 40px);
+    }
+
+    .titulo {
+        font-size: 18px;
+    }
+
+    .subtitulo {
+        font-size: 14px;
+    }
+
+    .menu {
+        bottom: 15px;
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .herois {
+        flex-basis: 60px;
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .nome {
+        top: 4%;
+        font-size: clamp(48px, 13vw, 65px);
+        padding: 0 5px;
+    }
+
+    .personagem {
+        height: 53vh;
+        max-width: 100%;
+    }
+
+    .infos {
+        left: 15px;
+        right: 15px;
+        bottom: 105px;
+        width: auto;
+    }
+
+    .titulo {
+        font-size: 16px;
+    }
+
+    .frase-efeito {
+        font-size: clamp(28px, 8vw, 36px);
+    }
+
+    .subtitulo {
+        font-size: 13px;
+    }
+
+    .menu {
+        bottom: 12px;
+        gap: 8px;
+        padding: 0 8px;
+    }
+
+    .herois {
+        flex-basis: 52px;
+        width: 52px;
+        height: 52px;
+        border-width: 2px;
+    }
+}
+
+/* Celulares na horizontal */
+@media (max-height: 500px) {
+    .nome {
+        top: 2%;
+        font-size: clamp(35px, 10vh, 65px);
+    }
+
+    .personagem {
+        height: 85vh;
+    }
+
+    .infos {
+        bottom: 75px;
+        width: 40%;
+    }
+
+    .titulo {
+        font-size: 14px;
+    }
+
+    .frase-efeito {
+        font-size: clamp(22px, 5vh, 32px);
+    }
+
+    .subtitulo {
+        font-size: 12px;
+    }
+
+    .menu {
+        bottom: 8px;
+    }
+
+    .herois {
+        flex-basis: 42px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* Tela de carregamento da transformação */
+.carregamento {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
 }
 
-.herois {
-    border: 3px solid rgb(255, 0, 0);
-    /*background: rgba(61, 5, 5, 0.652);*/
-    background: none;
-    width: 100px;
-    height: 100px;
+.carregamento[hidden] {
+    display: none;
+}
+
+.caixa-carregamento {
+    width: min(100%, 420px);
+    padding: 32px 24px;
+
+    text-align: center;
+    color: #fff;
+
+    background: rgba(45, 10, 20, 0.95);
+    border: 2px solid #e3000b;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(227, 0, 11, 0.3);
+}
+
+.spinner {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 24px;
+
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #e3000b;
+    border-right-color: #ff6470;
     border-radius: 50%;
 
-    object-fit: cover;
-    object-position: top;
+    animation: girar 0.8s linear infinite;
+}
+
+.caixa-carregamento h2 {
+    margin-bottom: 12px;
+    font-size: clamp(22px, 5vw, 30px);
+}
+
+.caixa-carregamento p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spinner {
+        animation-duration: 2s;
+    }
 }
